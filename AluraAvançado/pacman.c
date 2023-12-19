@@ -4,46 +4,56 @@
 #include "mapa.h"
 
 MAPA m;
+POSICAO heroi;
 
 int acabou() {
 	return 0;
 }
 
-void move(char direcao) {
-	int x;
-	int y;
+int direcaocorreta(char direcao) {
+	return direcao == ESQUERDA || direcao == CIMA || direcao == BAIXO || direcao == DIREITA;
+}
 
-	for(int i = 0; i < m.linhas; i++) {
-		for(int j = 0; j < m.colunas; j++) {
-			if(m.matriz[i][j] == '@') {
-				x = i;
-				y = j;
-				break;
-			}
-		}
-	} 
+void move(char direcao) {
+	if (direcao == 'p'){
+		exit(1);
+	}
+
+	if(!direcaocorreta(direcao))	
+		return;
+
+	int proximox = heroi.x;
+	int proximoy = heroi.y;
 
 	switch(direcao) {
-		case 'a':
-			m.matriz[x][y-1] = '@';
+		case ESQUERDA:
+			proximoy--;
 			break;
-		case 'w':
-			m.matriz[x-1][y] = '@';
+		case CIMA:
+			proximox--;
 			break;
-		case 's':
-			m.matriz[x+1][y] = '@';
+		case BAIXO:
+			proximox++;
 			break;
-		case 'd':
-			m.matriz[x][y+1] = '@';
+		case DIREITA:
+			proximoy++;
 			break;
 	}
 
-	m.matriz[x][y] = '.';
+	if(!valida(&m, proximox, proximoy))
+		return;
+
+	if(!vazia(&m, proximox, proximoy))
+		return;
+
+	andanomapa(&m, heroi.x, heroi.y, proximox, proximoy);
+	heroi.x = proximox;
+	heroi.y = proximoy;
 }
 
 int main() {
-	
 	lemapa(&m);
+	encontramapa(&m, &heroi, HEROI);
 
 	do {
 		imprimemapa(&m);
@@ -56,4 +66,6 @@ int main() {
 	} while (!acabou());
 
 	liberamapa(&m);
+
+	return 0;
 }

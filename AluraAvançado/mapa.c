@@ -13,7 +13,7 @@ void lemapa(MAPA* m) {
 	fscanf(f, "%d %d", &(m->linhas), &(m->colunas));
 	alocamapa(m);
 	
-	for(int i = 0; i < 5; i++) {
+	for(int i = 0; i < m->linhas; i++) {
 		fscanf(f, "%s", m->matriz[i]);
 	}
 
@@ -40,4 +40,37 @@ void imprimemapa(MAPA* m) {
 	for(int i = 0; i < m->linhas; i++) {
 		printf("%s\n", m->matriz[i]);
 	}
+}
+
+void encontramapa(MAPA* m, POSICAO* p, char c) {
+	for(int i = 0; i < m->linhas; i++) {
+		for(int j = 0; j < m->colunas; j++) {
+			if(m->matriz[i][j] == c) {
+				p->x = i;
+				p->y = j;
+				return;
+			}
+		}
+	}
+
+}
+
+
+int valida(MAPA* m, int x, int y) {
+	if(x >= m->linhas) 
+		return 0;
+	if(y >= m->colunas) 
+		return 0;
+
+	return 1;	
+}
+
+int vazia(MAPA* m, int x, int y) {
+	return m->matriz[x][y] == '.';
+}
+
+void andanomapa(MAPA* m, int xorigem, int yorigem, int xdestino, int ydestino) {
+	char personagem = m->matriz[xorigem][yorigem];
+	m->matriz[xdestino][ydestino] = personagem;
+	m->matriz[xorigem][yorigem] = VAZIO;
 }
