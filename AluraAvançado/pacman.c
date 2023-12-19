@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "time.h"
-#include "fogefoge.h"
+#include "pacman.h"
 #include "mapa.h"
 
 MAPA m;
@@ -18,7 +18,7 @@ int acabou() {
 		
 }
 
-int ehdirecao(char direcao) {
+int direcaocorreta(char direcao) {
 	return
 		direcao == ESQUERDA || 
 		direcao == CIMA ||
@@ -28,7 +28,7 @@ int ehdirecao(char direcao) {
 
 void move(char direcao) {
 
-	if(!ehdirecao(direcao))	
+	if(!direcaocorreta(direcao))	
 		return;
 
 	int proximox = heroi.x;

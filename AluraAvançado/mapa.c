@@ -71,12 +71,12 @@ int encontramapa(MAPA* m, POSICAO* p, char c) {
 
 int podeandar(MAPA* m, char personagem, int x, int y) {
 	return 
-		ehvalida(m, x, y) && 
-		!ehparede(m, x, y) &&
-		!ehpersonagem(m, personagem, x, y);
+		valida(m, x, y) && 
+		!parede(m, x, y) &&
+		!atuantes(m, personagem, x, y);
 }
 
-int ehvalida(MAPA* m, int x, int y) {
+int valida(MAPA* m, int x, int y) {
 	if(x >= m->linhas) 
 		return 0;
 	if(y >= m->colunas) 
@@ -85,12 +85,12 @@ int ehvalida(MAPA* m, int x, int y) {
 	return 1;	
 }
 
-int ehpersonagem(MAPA* m, char personagem, int x, int y) {
+int atuantes(MAPA* m, char personagem, int x, int y) {
 	return
 		m->matriz[x][y] == personagem;
 }
 
-int ehparede(MAPA* m, int x, int y) {
+int parede(MAPA* m, int x, int y) {
 	return 
 		m->matriz[x][y] == PAREDE_VERTICAL ||
 		m->matriz[x][y] == PAREDE_HORIZONTAL;

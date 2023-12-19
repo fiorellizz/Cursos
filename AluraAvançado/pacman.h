@@ -6,5 +6,5 @@
 int acabou();
 void move(char direcao);
  
-int ehdirecao(char direcao);
+int direcaocorreta(char direcao);
 void fantasmas();
