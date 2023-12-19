@@ -19,11 +19,7 @@ int acabou() {
 }
 
 int direcaocorreta(char direcao) {
-	return
-		direcao == ESQUERDA || 
-		direcao == CIMA ||
-		direcao == BAIXO ||
-		direcao == DIREITA;
+	return direcao == ESQUERDA || direcao == CIMA || direcao == BAIXO || direcao == DIREITA;
 }
 
 void move(char direcao) {
@@ -57,9 +53,7 @@ void move(char direcao) {
 	heroi.y = proximoy;
 }
 
-int praondefantasmavai(int xatual, int yatual, 
-	int* xdestino, int* ydestino) {
-
+int praondefantasmavai(int xatual, int yatual, int* xdestino, int* ydestino) {
 	int opcoes[4][2] = { 
 		{ xatual   , yatual+1 }, 
 		{ xatual+1 , yatual   },  
