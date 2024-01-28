@@ -7,7 +7,6 @@
 MAPA m;
 POSICAO heroi;
 
-
 int acabou() {
 	POSICAO pos;
 

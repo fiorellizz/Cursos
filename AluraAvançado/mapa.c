@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "mapa.h"
 #include <string.h>
+#include "mapa.h"
 
 void lemapa(MAPA* m) {
 	FILE* f;
@@ -38,7 +38,6 @@ void copiamapa(MAPA* destino, MAPA* origem) {
 	}
 }
 
-
 void liberamapa(MAPA* m) {
 	for(int i = 0; i < m->linhas; i++) {
 		free(m->matriz[i]);
@@ -65,7 +64,6 @@ int encontramapa(MAPA* m, POSICAO* p, char c) {
 		}
 	}
 
-	// não encontramos!
 	return 0;
 }
 
