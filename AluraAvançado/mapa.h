@@ -28,16 +28,11 @@ struct posicao {
 typedef struct posicao POSICAO;
 
 int encontramapa(MAPA* m, POSICAO* p, char c);
-
 int ehvalida(MAPA* m, int x, int y);
 int ehparede(MAPA* m, int x, int y);
 int ehpersonagem(MAPA* m, char personagem, int x, int y);
-
-void andanomapa(MAPA* m, int xorigem, int yorigem, 
-	int xdestino, int ydestino);
-
+void andanomapa(MAPA* m, int xorigem, int yorigem, int xdestino, int ydestino);
 void copiamapa(MAPA* destino, MAPA* origem);
-
 int podeandar(MAPA* m, char personagem, int x, int y);
 
 #endif
