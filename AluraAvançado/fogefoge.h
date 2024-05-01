@@ -15,5 +15,4 @@ void fantasmas();
 void explodepilula();
 void explodepilula2(int x, int y, int somax, int somay, int qtd);
 
-
 #endif
